@@ -1,0 +1,29 @@
+<%- include("../partials/header") %>
+<h2>
+    <%=heading%>
+</h2>
+
+<ul>
+    <% for(var i = 0; i < listItems.length; i++){%>
+        <li><%= listItems[i].name%></li>
+    <% } %>
+</ul>
+<%- include("../partials/footer") %>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    //i tried to use ajax but i couldnt get it to work
+    $(document).ready(function(){
+        $.ajax({
+            url:  "https://api.spotify.com/v1/artists",
+            type: "GET",
+            success: function(result){
+                console.log(result);
+            },
+            error: function(error){
+                console.log(error);
+            }
+        })
+    })
+</script>
